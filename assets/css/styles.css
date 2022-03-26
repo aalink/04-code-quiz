@@ -15,10 +15,11 @@ header {
 h1 {
     color: white;
     text-align: center;
+    margin: 15px;
 }
 
 h3 {
-    font-size: 45px;
+    font-size: 30px;
     padding: 20px;
     margin: 10px;
 }
@@ -34,11 +35,15 @@ section {
 }
 
 p {
-    font-size: 30px;
+    font-size: 20px;
     background-color: #2c5d63; 
     padding: 20px;
     margin: 10px;
 
+}
+
+footer {
+    padding: 40px;
 }
 
 p:hover {
@@ -93,8 +98,17 @@ p:hover {
     font-size: 40px;
     border: solid;
     border-color:#a2c11c;
+    text-align: center;
+}
 
-    
+.add-subtract {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pointButton {
+    padding: 20px;
+    font-size: 70px;
 }
 
 /* ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
