@@ -1,11 +1,6 @@
-var count = 60;
-//  Select increment and decrement button elements
-var startButton = document.querySelector(".start-button");
-var timerCountDown = document.querySelector(".timer-count");
-var plusButton = document.querySelector(".add-point");
-var currentQuestionIndex = 0;
-score = 0;
-var scoreBox = document.querySelector(".timer-score-boxes");
+function hideStartButton() {
+  startButton.style.display = "none";
+}
 
 var question1 = [
   {
@@ -34,8 +29,61 @@ var question3 = [
   },
 ];
 
-function displayOnPage() {
+
+
+var count = 10;
+//  Select increment and decrement button elements
+var startButton = document.querySelector(".start-button");
+var timerCountDown = document.querySelector(".timer-count");
+var plusButton = document.querySelector("#add-point");
+var subtractButton = document.querySelector("#subtract-point");
+var choice1 = document.querySelector("#choice1")
+var choice2 = document.querySelector("#choice2")
+var choice3 = document.querySelector("#choice3")
+var choice4 = document.querySelector("#choice4")
+
+var currentQuestionIndex = 0;
+score = 0;
+var scoreBox = document.querySelector(".timer-score-boxes");
+
+function displayQuestion1() {
   var currentQuestion = question1[currentQuestionIndex];
+  var questionTitleElement = document.querySelector("#question-ID");
+  var choiceElement1 = document.querySelector("#choice1");
+  var choiceElement2 = document.querySelector("#choice2");
+  var choiceElement3 = document.querySelector("#choice3");
+  var choiceElement4 = document.querySelector("#choice4");
+  
+  questionTitleElement.textContent = currentQuestion.questionTitle;
+  choiceElement1.textContent = currentQuestion.choices[0];
+  choiceElement2.textContent = currentQuestion.choices[1];
+  choiceElement3.textContent = currentQuestion.choices[2];
+  choiceElement4.textContent = currentQuestion.choices[3];
+
+  choiceElement1.addEventListener("click", function(){
+     if (condition) {
+       
+     }
+  })
+}
+
+function displayQuestion2() {
+  var currentQuestion = question2[currentQuestionIndex];
+  var questionTitleElement = document.querySelector("#question-ID");
+  var choiceElement1 = document.querySelector("#choice1");
+  var choiceElement2 = document.querySelector("#choice2");
+  var choiceElement3 = document.querySelector("#choice3");
+  var choiceElement4 = document.querySelector("#choice4");
+  
+  questionTitleElement.textContent = currentQuestion.questionTitle;
+  choiceElement1.textContent = currentQuestion.choices[0];
+  choiceElement2.textContent = currentQuestion.choices[1];
+  choiceElement3.textContent = currentQuestion.choices[2];
+  choiceElement4.textContent = currentQuestion.choices[3];
+}
+
+function displayQuestion3() {
+  var currentQuestion = question3[currentQuestionIndex];
   var questionTitleElement = document.querySelector("#question-ID");
   var choiceElement1 = document.querySelector("#choice1");
   var choiceElement2 = document.querySelector("#choice2");
@@ -51,6 +99,7 @@ function displayOnPage() {
 // FUNCTION
 // make event listener because they have to click an option, target the question class on the buttons
 // ------ this is not visible to the user
+
 // make sure if they selected the right or wrong answer, or run a "match"
 // if answer is wrong, take off time, if right, do nothing.
 // -------- clear the area it is trying to be loaded and then load the next question
@@ -62,7 +111,7 @@ function displayOnPage() {
 
 // // Delegate event listener to the parent element, <div id="buttons">
 // buttonListEl.on('click', '.letter-button', function (event) {
-//   var displayLetterEl = $('<div>');
+  //   var displayLetterEl = $('<div>');
 
 //   displayLetterEl.addClass('letter');
 
@@ -80,23 +129,17 @@ function displayOnPage() {
 
 // use set attribute when i need to clear the page and display a score.
 
-startButton.addEventListener("click", function () {
-  displayOnPage();
-  timerCountDown.textContent = count;
-  var timeInterval = setInterval(function () {
-    count--;
-    if (count >= 0) {
-      timerCountDown.textContent = count;
-      console.log(count);
-    } else {
-      clearInterval(timeInterval);
-      count = 60;
-    }
-  }, 1000);
-});
-
-plusButton.addEventListener("click", function () {
-
-  scoreBox.textContent = score;
-  score++;
-});
+  startButton.addEventListener("click", function () {
+    displayQuestion1();
+    timerCountDown.textContent = count;
+    var timeInterval = setInterval(function () {
+      count--;
+      if (count >= 0) {
+        timerCountDown.textContent = count;
+        console.log(count);
+      } else {
+        clearInterval(timeInterval);
+        count = 10;
+      }
+    }, 1000);
+  });
