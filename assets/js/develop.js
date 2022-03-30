@@ -9,7 +9,8 @@ var score = 0;
 var scoreBox = document.querySelector(".timer-score-boxes");
 var h3ToDisplayQuestion = document.querySelector("h3");
 var ol = document.querySelector("#question-options");
-var endOfQuiz = document.querySelector(".quiz-box")
+var endOfQuiz = document.querySelector(".quiz-box");
+var showWrongMessage = document.querySelector("#wrong-message");
 
 function hideStartButton() {
   startButton.style.display = "none";
@@ -55,62 +56,38 @@ function displayQuestion(index) {
 }
 
 function registerChoiceClick() {
-  console.log('working');
-  userChoice = this.textContent
+  console.log("working");
+  userChoice = this.textContent;
   console.log(userChoice);
   if (userChoice === question[currentQuestionIndex].answer) {
     console.log("CORRECT");
-  
   } else {
+    //create HTML element that appears and states it's WRONG
+    // keep it hidden until it's clicked wrong
+    showWrongMessage.classList.remove("hide");
+    setTimeout(function () {
+      showWrongMessage.classList.add("hide");
+    }, 1000);
     console.log("WRONG");
     count -= 10;
   }
   currentQuestionIndex++;
 
   if (currentQuestionIndex === question.length) {
-    // this will write a function to end the quiz.
-    endQuiz()
+    setTimeout(function () {
+      endQuiz();
+    }, 1500);
   } else {
-    displayQuestion(currentQuestionIndex);
+    setTimeout(function () {
+      displayQuestion(currentQuestionIndex);
+    }, 1500);
   }
 }
 
 function endQuiz() {
-  endOfQuiz.setAttribute("class", "hide")
+  endOfQuiz.setAttribute("class", "hide");
 }
 
-// displayQuestion(0);
-
-// FUNCTION
-// make event listener because they have to click an option, target the question class on the buttons
-// ------ this is not visible to the user
-
-// make sure if they selected the right or wrong answer, or run a "match"
-// if answer is wrong, take off time, if right, do nothing.
-// -------- clear the area it is trying to be loaded and then load the next question
-// load the next question
-// reference the question object
-// target the 2nd object in the array then bring that forward to the UI.
-//
-
-// // Delegate event listener to the parent element, <div id="buttons">
-// buttonListEl.on('click', '.letter-button', function (event) {
-//   var displayLetterEl = $('<div>');
-
-//   displayLetterEl.addClass('letter');
-
-//   // get letter from clicked letter button's `data-letter` attribute and use it for display
-//   displayLetterEl.text($(event.target).attr('data-letter'));
-//   displayEl.append(displayLetterEl);
-// });
-
-// REPURPOSE THE ABOVE CODE
-
-// Need to make a click event.
-
-// don't forget the "this" keyword, it will determine if the user clicked on the right answer.
-
-// use set attribute when i need to clear the page and display a score.
 
 startButton.addEventListener("click", function () {
   displayQuestion(currentQuestionIndex);
@@ -126,3 +103,5 @@ startButton.addEventListener("click", function () {
     }
   }, 1000);
 });
+
+// HIDE the items.  The div is hidden, if answer is correct
