@@ -1,4 +1,4 @@
-var count = 100;
+var count = 60;
 //  Select increment and decrement button elements
 var startButton = document.querySelector(".start-button");
 var timerCountDown = document.querySelector(".timer-count");
@@ -12,6 +12,8 @@ var ol = document.querySelector("#question-options");
 var endOfQuiz = document.querySelector(".quiz-box");
 var showWrongMessage = document.querySelector("#wrong-message");
 var showCorrectMessage = document.querySelector("#correct-message");
+
+
 
 function hideStartButton() {
   startButton.style.display = "none";
@@ -42,6 +44,18 @@ var question = [
       "Which programming language isn't object oriented?",
     choices: ["C#", "Swift", "C", "Ruby"],
     answer: "C",
+  },
+  {
+    questionTitle:
+      "Which programming book was written by Andrew Hunt and David Thomas?",
+    choices: ["Clean Code", "The Pragmatic Programmer", "Introduction to Algorithms", "Clean Architecture"],
+    answer: "The Pragmatic Programmer",
+  },
+  {
+    questionTitle:
+      "Which company is known for designing the M1 processor?",
+    choices: ["Intel", "Apple", "AMD", "ARM"],
+    answer: "The Pragmatic Programmer",
   },
 ];
 
@@ -114,5 +128,3 @@ startButton.addEventListener("click", function () {
     }
   }, 1000);
 });
-
-// HIDE the items.  The div is hidden, if answer is correct
