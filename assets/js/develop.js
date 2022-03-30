@@ -11,6 +11,7 @@ var h3ToDisplayQuestion = document.querySelector("h3");
 var ol = document.querySelector("#question-options");
 var endOfQuiz = document.querySelector(".quiz-box");
 var showWrongMessage = document.querySelector("#wrong-message");
+var showCorrectMessage = document.querySelector("#correct-message");
 
 function hideStartButton() {
   startButton.style.display = "none";
@@ -36,6 +37,12 @@ var question = [
     choices: ["Microsoft", "Nvidia", "Samsung", "Google"],
     answer: "Nvidia",
   },
+  {
+    questionTitle:
+      "Which programming language isn't object oriented?",
+    choices: ["C#", "Swift", "C", "Ruby"],
+    answer: "C",
+  },
 ];
 
 function displayQuestion(index) {
@@ -60,6 +67,10 @@ function registerChoiceClick() {
   userChoice = this.textContent;
   console.log(userChoice);
   if (userChoice === question[currentQuestionIndex].answer) {
+    showCorrectMessage.classList.remove("hide");
+    setTimeout(function () {
+      showCorrectMessage.classList.add("hide");
+    }, 1000);
     console.log("CORRECT");
   } else {
     //create HTML element that appears and states it's WRONG
