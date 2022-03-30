@@ -117,6 +117,17 @@ li:hover {
     font-size: 70px;
 }
 
+.wrongText {
+    font-size: 40px;
+    color: red;
+    text-align: center;
+}
+.correctText {
+    font-size: 40px;
+    color: #a2c11c;
+    text-align: center;
+}
+
 /* ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
 .first-color { 
 	background: #283739; 
