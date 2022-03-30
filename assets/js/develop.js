@@ -2,22 +2,19 @@ var count = 60;
 //  Select increment and decrement button elements
 var startButton = document.querySelector(".start-button");
 var timerCountDown = document.querySelector(".timer-count");
-var plusButton = document.querySelector("#add-point");
-var subtractButton = document.querySelector("#subtract-point");
+var addPoint = document.querySelector(".add-point");
 var currentQuestionIndex = 0;
 var score = 0;
-var scoreBox = document.querySelector(".timer-score-boxes");
+var scoreBox = document.querySelector(".add-point");
 var h3ToDisplayQuestion = document.querySelector("h3");
 var ol = document.querySelector("#question-options");
-var endOfQuiz = document.querySelector(".quiz-box");
+var quizBox = document.querySelector(".quiz-box");
 var showWrongMessage = document.querySelector("#wrong-message");
 var showCorrectMessage = document.querySelector("#correct-message");
+var timerScoreBox = document.querySelector(".timer-score");
 
-
-
-function hideStartButton() {
-  startButton.style.display = "none";
-}
+// quizBox.style.display = "none"
+// timerScoreBox.style.display = "none"
 
 var question = [
   {
@@ -40,24 +37,31 @@ var question = [
     answer: "Nvidia",
   },
   {
-    questionTitle:
-      "Which programming language isn't object oriented?",
+    questionTitle: "Which programming language isn't object oriented?",
     choices: ["C#", "Swift", "C", "Ruby"],
     answer: "C",
   },
   {
     questionTitle:
       "Which programming book was written by Andrew Hunt and David Thomas?",
-    choices: ["Clean Code", "The Pragmatic Programmer", "Introduction to Algorithms", "Clean Architecture"],
+    choices: [
+      "Clean Code",
+      "The Pragmatic Programmer",
+      "Introduction to Algorithms",
+      "Clean Architecture",
+    ],
     answer: "The Pragmatic Programmer",
   },
   {
-    questionTitle:
-      "Which company is known for designing the M1 processor?",
+    questionTitle: "Which company is known for designing the M1 processor?",
     choices: ["Intel", "Apple", "AMD", "ARM"],
-    answer: "The Pragmatic Programmer",
+    answer: "Apple",
   },
 ];
+
+function hideStartButton() {
+  startButton.style.display = "none";
+}
 
 function displayQuestion(index) {
   ol.innerHTML = "";
@@ -81,14 +85,14 @@ function registerChoiceClick() {
   userChoice = this.textContent;
   console.log(userChoice);
   if (userChoice === question[currentQuestionIndex].answer) {
+    console.log("Add 1 point");
+    scoreBox.textContent++;
     showCorrectMessage.classList.remove("hide");
     setTimeout(function () {
       showCorrectMessage.classList.add("hide");
     }, 1000);
     console.log("CORRECT");
   } else {
-    //create HTML element that appears and states it's WRONG
-    // keep it hidden until it's clicked wrong
     showWrongMessage.classList.remove("hide");
     setTimeout(function () {
       showWrongMessage.classList.add("hide");
@@ -105,14 +109,14 @@ function registerChoiceClick() {
   } else {
     setTimeout(function () {
       displayQuestion(currentQuestionIndex);
-    }, 1500);
+    }, 200);
   }
 }
 
 function endQuiz() {
-  endOfQuiz.setAttribute("class", "hide");
+  quizBox.setAttribute("class", "hide");
+  timerCountDown.style.display = "none";
 }
-
 
 startButton.addEventListener("click", function () {
   displayQuestion(currentQuestionIndex);
