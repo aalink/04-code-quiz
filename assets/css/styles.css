@@ -95,7 +95,19 @@ li:hover {
 
 }
 
-.timer-score-boxes {
+.timer-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+    padding: 75px;
+    font-size: 40px;
+    border: solid;
+    border-color:#a2c11c;
+    text-align: center;
+}
+
+.score-box {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
