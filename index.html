@@ -10,29 +10,40 @@
   </head>
   <body>
     <header>
-      <div><h1>Code Quiz</h1></div>
+      <div><h1>Tech Quiz</h1></div>
+      <h2>This is a quiz about a variety to tech topics!</h2>
+      <h2>Have fun and good luck!</h2>
     </header>
     <main>
       <section>
         <button onclick="hideStartButton()" class="start-button">START</button>
       </section>
       <section class="options">
-        <div id="code-quiz" class="options">
-          <div class="quiz-box">
-            <h3 id="question-box"></h3>
-            <ol id="question-options"></ol>
-            <!-- make a class for below div to style with red text of something else -->
-            <div id="wrong-message" class="hide wrongText">WRONG</div>
-            <div id="correct-message" class="hide correctText">CORRECT</div>
-          </div>
-          <div class="timer-score">
-            <div class="timer-box timer-count">Timer</div>
-            <div class="score-box">
-              <div>Score</div>
-              <div class="add-point">0</div>
+        <div id="quiz-div" class="hide">
+          <div id="code-quiz" class="options">
+            <div class="quiz-box">
+              <h3 id="question-box"></h3>
+              <ol id="question-options"></ol>
+              <!-- make a class for below div to style with red text of something else -->
+              <div id="wrong-message" class="hide wrongText">WRONG</div>
+              <div id="correct-message" class="hide correctText">CORRECT</div>
             </div>
-          </div>
+            <div class="timer-score">
+              <div class="timer-box timer-count">Timer</div>
+              <div class="score-box">
+                <div>Score</div>
+                <div class="add-point">0</div>
+              </div>
+            </div>
         </div>
+        </div>
+      </section>
+      <section id="enter-name" class="hide">
+        <div class="name-and-score">
+          <input id="name-box" type="text" placeholder="Enter your name here">
+          <input type="submit" value="Submit" class="submit-button">
+        </div>
+        <button class="play-again-button">PLAY AGAIN</button>
       </section>
       <footer></footer>
     </main>
