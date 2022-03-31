@@ -1,6 +1,7 @@
 var count = 60;
 //  Select increment and decrement button elements
 var startButton = document.querySelector(".start-button");
+var playAgainButton = document.querySelector(".play-again-button");
 var timerCountDown = document.querySelector(".timer-count");
 var addPoint = document.querySelector(".add-point");
 var currentQuestionIndex = 0;
@@ -12,6 +13,10 @@ var quizBox = document.querySelector(".quiz-box");
 var showWrongMessage = document.querySelector("#wrong-message");
 var showCorrectMessage = document.querySelector("#correct-message");
 var timerScoreBox = document.querySelector(".timer-score");
+var enterNameHere = document.querySelector("#enter-name");
+var nameBox = document.querySelector("#name-box");
+var submitButton = document.querySelector(".submit-button");
+var quizDiv = document.querySelector("#quiz-div");
 
 // quizBox.style.display = "none"
 // timerScoreBox.style.display = "none"
@@ -67,7 +72,7 @@ function displayQuestion(index) {
   ol.innerHTML = "";
   h3ToDisplayQuestion.innerHTML = "";
   h3ToDisplayQuestion.append(question[index].questionTitle);
-  console.log(question[index].questionTitle);
+  // console.log(question[index].questionTitle);
   for (let i = 0; i < 4; i++) {
     var li = document.createElement("li");
     var questionsToInterate = question[index].choices[i];
@@ -75,29 +80,29 @@ function displayQuestion(index) {
     ol.append(li);
     li.onclick = registerChoiceClick;
     // li.attributes;
-    console.log(question[0].choices[i]);
+    // console.log(question[0].choices[i]);
     // li.addEventListener
   }
 }
 
 function registerChoiceClick() {
-  console.log("working");
+  // console.log("working");
   userChoice = this.textContent;
-  console.log(userChoice);
+  // console.log(userChoice);
   if (userChoice === question[currentQuestionIndex].answer) {
-    console.log("Add 1 point");
+    // console.log("Add 1 point");
     scoreBox.textContent++;
     showCorrectMessage.classList.remove("hide");
     setTimeout(function () {
       showCorrectMessage.classList.add("hide");
     }, 1000);
-    console.log("CORRECT");
+    // console.log("CORRECT");
   } else {
     showWrongMessage.classList.remove("hide");
     setTimeout(function () {
       showWrongMessage.classList.add("hide");
     }, 1000);
-    console.log("WRONG");
+    // console.log("WRONG");
     count -= 10;
   }
   currentQuestionIndex++;
@@ -116,19 +121,38 @@ function registerChoiceClick() {
 function endQuiz() {
   quizBox.setAttribute("class", "hide");
   timerCountDown.style.display = "none";
+  enterNameHere.setAttribute("class", "none");
+  // storeNameAndScore(); // STILL DEVELOPING BELOW
 }
 
+playAgainButton.addEventListener("click", function () {
+  location.reload();
+});
+
 startButton.addEventListener("click", function () {
+  quizDiv.setAttribute("class", "none");
   displayQuestion(currentQuestionIndex);
   timerCountDown.textContent = count;
   var timeInterval = setInterval(function () {
     count--;
     if (count >= 0) {
       timerCountDown.textContent = count;
-      console.log(count);
+      // console.log(count);
     } else {
       clearInterval(timeInterval);
       count = 10;
+      endQuiz()
     }
   }, 1000);
 });
+
+submitButton.addEventListener("click", function () {
+ // submit button that will store the name of player and their score.
+});
+
+// MAKE A FUNCTION THAT STORES NAME AND SCORE INTO LOCAL STORAGE
+// function storeNameAndScore() {
+//   console.log("This is the score: " + scoreBox.textContent);
+//   localStorage.setItem(playerName, scoreBox.textContent);
+// }
+// MAKE A FUNCTION THAT STORES NAME AND SCORE INTO LOCAL STORAGE
